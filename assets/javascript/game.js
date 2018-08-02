@@ -7,7 +7,7 @@ var guessesLeft = 10;
 var arrayInputs = [];
 var placeholder =[ ];
 var totalIndices = 0;
-var arrayWords = ["calfornia","connecticut","louisiana","massachusetts","washington","minnesota"];
+var arrayWords = ["california","connecticut","louisiana","massachusetts","washington","minnesota"];
 
 clearInputs();
 function createNewInput()
