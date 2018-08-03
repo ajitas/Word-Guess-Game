@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Word Guess Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -11,20 +11,14 @@
 </head>
 <body>
     <div class = "container">
-        <div><h2><u>Word Guess Game</u></h2></div>
-        <div>Press any key to get started!</div>
-        <div>Wins:  <span id = "wins"></span></div>
+        <div id="heading">Guess the Cities of World!</div>
+        <div class="info">Press any key to get started!</div>
+        <div>Wins:  <span id = "wins"></span> Losses:  <span id = "losses"></span></div>
         <div>Current Word</div>
         <div id ="wordplaceholder"></div>
         <div>Guesses left:  <span id = "guessesleft"></span></div>
         <div>Guesses so far:  <span id = "guesses"></span></div>
-        <audio id="california"><source src="assets/audio/En-us-California.ogg" type="audio/ogg"></audio>
-        <audio id="connecticut"><source src="assets/audio/En-us-Connecticut.ogg" type="audio/ogg"></audio>
-        <audio id="louisiana"><source src="assets/audio/En-us-Louisiana.ogg" type="audio/ogg"></audio>
-        <audio id="massachusetts"><source src="assets/audio/En-us-Massachusetts.ogg" type="audio/ogg"></audio>
-        <audio id="washington"><source src="assets/audio/En-us-Washington.ogg" type="audio/ogg"></audio>
-        <audio id="minnesota"><source src="assets/audio/En-us-Minnesota-1.ogg" type="audio/ogg"></audio>
-
+        <img id="cities" src="assets/images/Aspen-Challenge-all-cities-graphic.jpg">
         </div>
         <script src="assets/javascript/game.js"></script>
 </body>

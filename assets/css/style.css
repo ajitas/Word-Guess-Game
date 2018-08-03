@@ -1,6 +1,36 @@
 .container {
     text-align:center;
+    font-size:25px;
+    height:700px;
+    width:100%;
+}
+
+#cities {
+    position:fixed;
+    bottom:0;
+    left:0;
+    height:400px;
+    width:100%;
+    z-index:-1;
 }
 .container>div {
     padding:10px;
 }
+
+#heading {
+    font-size:40px;
+}
+
+.info {
+    font-style: italic;
+}
+
+#wins, #losses {
+    font-weight:bolder;
+}
+#guessesleft, #wordplaceholder {
+    font-weight:bold;
+}
+
+
+

@@ -1,33 +1,89 @@
-
-
 var userInput;
 var comInput;
 var wins = 0;
+var losses = 0;
 var guessesLeft = 10;
 var arrayInputs = [];
-var placeholder =[ ];
+var placeholder = [];
 var totalIndices = 0;
-var arrayWords = ["california","connecticut","louisiana","massachusetts","washington","minnesota"];
+var arrayWords = 
+                ["paris",
+                "mumbai",
+                "jakarta",
+                "taipei",
+                "chicago",
+                "kabul",
+                "brussels",
+                "beijing",
+                "tokyo",
+                "cairo",
+                "havana",
+                "london",
+                "perth",
+                "sydney",
+                "melbourne",
+                "brisbane",
+                "seoul",
+                "colombo",
+                "stockholm",
+                "bangkok",
+                "madrid",
+                "singapore",
+                "edinburgh",
+                "moscow",
+                "doha",
+                "lisbon",
+                "muscat",
+                "islamabad",
+                "amsterdam",
+                "rome",
+                "dublin",
+                "budapest",
+                "athens",
+                "berlin",
+                "prague",
+                "dhaka",
+                "seattle",
+                "portland",
+                "orlando"];
 
-clearInputs();
-function createNewInput()
-{
-        comInput = arrayWords[Math.floor(Math.random()*6)];
-        var blank = document.getElementById("wordplaceholder");
-        for( var i = 0; i < comInput.length; i++){
-            placeholder.push("__");
-        }
-        for( var i = 0; i < placeholder.length; i++){
-            blank.textContent = blank.textContent + placeholder[i] + " ";
-        }
+function resetGame(){
+    guessesLeft = 10;
+    totalIndices = 0;
+    document.getElementById("guesses").textContent = "";
+    document.getElementById("guessesleft").textContent = guessesLeft;
+    document.getElementById("wordplaceholder").textContent = "";
+    document.getElementById("wins").textContent = wins;
+    document.getElementById("losses").textContent = losses;
+
+    var inputArrayLength = arrayInputs.length;
+    for(var i = 0; i < inputArrayLength; i++)
+    {
+        arrayInputs.pop();
+    }
+    var placeholderLength = placeholder.length;
+    for(var i = 0; i < placeholderLength; i++)
+    {
+        placeholder.pop();
+    }
+    comInput = arrayWords[Math.floor(Math.random()*arrayWords.length)];
+    var blank = document.getElementById("wordplaceholder");
+    for( var i = 0; i < comInput.length; i++){
+        placeholder.push("__");
+    }
+    for( var i = 0; i < placeholder.length; i++){
+        blank.textContent = blank.textContent + placeholder[i] + " ";
+    }
 }
+
+resetGame();
+
 document.onkeyup = function(event){
     if(event.keyCode >= 65 && event.keyCode <= 90 && arrayInputs.indexOf(event.key.toLowerCase()) == -1){
 
         userInput = event.key.toLowerCase();
         arrayInputs.push(event.key.toLowerCase());
         var blank = document.getElementById("wordplaceholder");
-        var indices = [];
         var matchFound = false;
         
         for(var i = 0; i < comInput.length; i++){
@@ -44,21 +100,15 @@ document.onkeyup = function(event){
             }
             if(totalIndices == placeholder.length) {
                 wins++;
-                
-                var word = "";
-                for(var i = 0; i < placeholder.length; i++){
-                    word = word + placeholder[i];
-                }
-                document.getElementById(word).play();
-                clearInputs();
+                resetGame();
             }
         }
         else{
             guessesLeft--;
             document.getElementById("guessesleft").textContent = guessesLeft;
-            if(guessesLeft == 0)
-            {
-                clearInputs();
+            if(guessesLeft == 0){
+                losses++;
+                resetGame();
             }
             else{
                 if(document.getElementById("guesses").textContent == ""){
@@ -69,8 +119,8 @@ document.onkeyup = function(event){
                 }
             }
         }
-    
         document.getElementById("wins").textContent = wins;
+        document.getElementById("losses").textContent = losses;
     }
     else
     {
@@ -78,24 +128,4 @@ document.onkeyup = function(event){
             alert("Invalid input");
     }
 }
-function clearInputs()
-{
-    guessesLeft = 10;
-    totalIndices = 0;
-    document.getElementById("guesses").textContent = "";
-    document.getElementById("guessesleft").textContent = guessesLeft;
-    document.getElementById("wordplaceholder").textContent = "";
-    document.getElementById("wins").textContent = wins;
 
-    var inputArrayLength = arrayInputs.length;
-    for(var i = 0; i < inputArrayLength; i++)
-    {
-        arrayInputs.pop();
-    }
-    var placeholderLength = placeholder.length;
-    for(var i = 0; i < placeholderLength; i++)
-    {
-        placeholder.pop();
-    }
-    createNewInput();
-}
