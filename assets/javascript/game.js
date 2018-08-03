@@ -5,7 +5,7 @@ var losses = 0;
 var guessesLeft = 10;
 var arrayInputs = [];
 var placeholder = [];
-var totalIndices = 0;
+var totalIndicesFound = 0;
 var arrayWords = 
                 ["paris",
                 "mumbai",
@@ -49,7 +49,7 @@ var arrayWords =
 
 function resetGame(){
     guessesLeft = 10;
-    totalIndices = 0;
+    totalIndicesFound = 0;
     document.getElementById("guesses").textContent = "";
     document.getElementById("guessesleft").textContent = guessesLeft;
     document.getElementById("wordplaceholder").textContent = "";
@@ -88,7 +88,7 @@ document.onkeyup = function(event){
         
         for(var i = 0; i < comInput.length; i++){
             if(comInput[i] === userInput){
-                totalIndices = totalIndices + 1;
+                totalIndicesFound = totalIndicesFound + 1;
                 placeholder[i] = userInput;
                 matchFound = true;
             }
@@ -98,7 +98,7 @@ document.onkeyup = function(event){
             for( var i = 0; i < placeholder.length; i++){
                 blank.textContent = blank.textContent + placeholder[i] + " ";
             }
-            if(totalIndices == placeholder.length) {
+            if(totalIndicesFound == placeholder.length) {
                 wins++;
                 resetGame();
             }
